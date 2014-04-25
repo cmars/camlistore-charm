@@ -1,0 +1,8 @@
+#!/bin/bash
+set -ev
+apt-get install -y golang-go libsqlite3-dev unzip
+wget https://github.com/bradfitz/camlistore/archive/0.7.zip -O camlistore.zip
+unzip camlistore.zip
+(cd camlistore-0.7/; go run make.go)
+cp camlistore-0.7/bin/camlistored /usr/bin/camlistored
+cp camlistored.conf /etc/init

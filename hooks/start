@@ -1,0 +1,4 @@
+#!/bin/bash
+
+open-port 3179
+start camlistored

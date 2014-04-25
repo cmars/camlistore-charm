@@ -1,0 +1,5 @@
+name: camlistore
+summary: the camlistore server
+maintainer: Matthew Williams <lp@mattyw.net>
+description: |
+ The canlistore server

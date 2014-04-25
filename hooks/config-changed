@@ -1,0 +1,22 @@
+#!/usr/bin/env python
+import json
+import subprocess
+import os
+
+auth = subprocess.check_output(["config-get", "auth"])
+filename = "/.config/camlistore/server-config.json"
+print auth
+
+if os.path.exists(filename):
+    with open(filename) as f:
+        data = json.loads(f.read())
+        data["auth"] = auth.strip()
+    print data
+    with open(filename, 'w') as f:
+        f.write(json.dumps(data))
+
+try:
+    subprocess.check_call(["stop", "camlistored"])
+    subprocess.check_call(["start", "camlistored"])
+except Exception, e:
+    print e

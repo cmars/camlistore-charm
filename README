@@ -1,0 +1,15 @@
+Overview
+--------
+This charm installs the camlistore server
+
+Example
+-------
+juju deploy (as per normal)
+
+juju expose camlistore
+
+juju set camlistore auth=userpass:alice:secret
+
+Open a web browser and go to the charm's url port 3179
+
+Profit
