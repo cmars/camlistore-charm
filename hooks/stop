@@ -1,2 +1,4 @@
-#!/bin/bash
-stop camlistored
+#!/bin/bash -ex
+
+close-port 3179
+service camlistore stop || true

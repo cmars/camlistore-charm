@@ -1,0 +1,17 @@
+options:
+ 
+  userpass:
+    type: string
+    description: |
+        Basic HTTP auth credentials of the form "username:password".
+
+#  httpsCert:
+#    type: string
+#    descrption: |
+#        TLS public PEM certificate, with any necessary intermediates
+#        concatenated.
+#
+#  httpsKey:
+#    type: string
+#    description: TLS private key in PEM format.
+#

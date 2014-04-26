@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/bash -ex
 
 open-port 3179
-start camlistored
+service camlistore start || true

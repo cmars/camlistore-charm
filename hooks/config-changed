@@ -3,20 +3,21 @@ import json
 import subprocess
 import os
 
-auth = subprocess.check_output(["config-get", "auth"])
-filename = "/.config/camlistore/server-config.json"
-print auth
 
-if os.path.exists(filename):
-    with open(filename) as f:
-        data = json.loads(f.read())
-        data["auth"] = auth.strip()
-    print data
-    with open(filename, 'w') as f:
-        f.write(json.dumps(data))
+def config_changed():
+    userpass = subprocess.check_output(["config-get", "userpass"])
+    filename = "/var/lib/camlistore/.config/camlistore/server-config.json"
 
-try:
-    subprocess.check_call(["stop", "camlistored"])
-    subprocess.check_call(["start", "camlistored"])
-except Exception, e:
-    print e
+    if os.path.exists(filename):
+        with open(filename) as f:
+            data = json.loads(f.read())
+            data["auth"] = userpass.strip()
+        with open(filename, 'w') as f:
+            f.write(json.dumps(data))
+ 
+    subprocess.call(["service", "camlistore", "stop"])
+    subprocess.check_call(["service", "camlistore", "start"])
+
+
+if __name__ == '__main__':
+    config_changed()
