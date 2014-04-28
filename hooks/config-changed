@@ -5,7 +5,7 @@ import os
 
 
 def config_changed():
-    userpass = subprocess.check_output(["config-get", "userpass"])
+    userpass = subprocess.check_output(["config-get", "auth"])
     filename = "/var/lib/camlistore/.config/camlistore/server-config.json"
 
     if os.path.exists(filename):

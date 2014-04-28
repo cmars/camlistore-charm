@@ -1,9 +1,10 @@
 options:
  
-  userpass:
+  auth:
     type: string
     description: |
-        Basic HTTP auth credentials of the form "username:password".
+        Authentication credentials for accessing the camlistore
+        website. Example: "userpass:alice:secret"
 
 #  httpsCert:
 #    type: string
